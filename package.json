@@ -1,0 +1,20 @@
+{
+  "name": "@pipeworx/mcp-open-sanctions",
+  "version": "0.1.0",
+  "description": "OpenSanctions MCP — Global sanctions and PEP data (free, no auth required)",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "open-sanctions"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pipeworx-io/mcp-open-sanctions"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
