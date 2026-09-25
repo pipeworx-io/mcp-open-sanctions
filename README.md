@@ -1,15 +1,15 @@
 # mcp-open-sanctions
 
-OpenSanctions MCP — Global sanctions and PEP data (free, no auth required)
+OpenSanctions MCP — global sanctions and PEP data.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1476+ live data sources.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1679+ live data sources.
 
 ## Tools
 
 | Tool | Description |
 |------|-------------|
-| `search_entities` | Search global sanctions, watchlists, and PEP (politically exposed persons) databases. Returns matched entities with names, countries, datasets, and sanctions details. Example: search_entities("Vladimir Putin") or search_entities("Huawei", schema="Company") |
-| `get_entity` | Get full details for a sanctioned entity by its OpenSanctions ID. Returns all properties including names, addresses, identifiers, sanctions programs, and related entities. |
+| `search_entities` | Search global sanctions, watchlists, and PEP (politically exposed persons) databases. Returns matched entities with names, countries, datasets, and sanctions details. Example: search_entities("Vladimir Putin") or search_entities("Huawei", schema="Company"). Requires your own OpenSanctions API key, passed as _apiKey. |
+| `get_entity` | Get full details for a sanctioned entity by its OpenSanctions ID. Returns all properties including names, addresses, identifiers, sanctions programs, and related entities. Requires your own OpenSanctions API key, passed as _apiKey. |
 
 ## Quick Start
 
@@ -55,9 +55,45 @@ directly, instead of just this one's:
 }
 ```
 
-Both URLs reach the same gateway and the same 1476+ data sources. The
+Both URLs reach the same gateway and the same 1679+ data sources. The
 only difference is which pack's tools are listed **directly**; `ask_pipeworx`
 reaches all of them from either one.
+
+## No MCP client? Call it over HTTP
+
+```bash
+curl -X POST https://gateway.pipeworx.io/v1/tools/open_sanctions_search_entities \
+  -H 'Content-Type: application/json' \
+  -d '{"query":"Gazprom"}'
+```
+
+No account needed for the first calls. Inspect any tool: `GET https://gateway.pipeworx.io/v1/tools/open_sanctions_search_entities`. Find one: `POST https://gateway.pipeworx.io/v1/tools/search_packs` with `{"query":"..."}`.
+
+## Standalone (no gateway account)
+
+This package also runs as a local stdio MCP server — no Pipeworx account, no
+gateway round-trip:
+
+```json
+{
+  "mcpServers": {
+    "open-sanctions": {
+      "command": "npx",
+      "args": ["-y", "@pipeworx/mcp-open-sanctions"]
+    }
+  }
+}
+```
+
+Or run it directly to confirm it starts:
+
+```bash
+npx -y @pipeworx/mcp-open-sanctions
+```
+
+It speaks MCP over stdin/stdout and answers `initialize`/`tools/list`/`tools/call`
+for **only** this pack's tools — none of the shared meta-tools the gateway
+connection above adds. Same source, same tools, no ask_pipeworx routing.
 
 ## Using with ask_pipeworx
 
@@ -78,13 +114,3 @@ The gateway picks the right tool and fills the arguments automatically.
 ## License
 
 MIT
-
-## No MCP client? Call it over HTTP
-
-```bash
-curl -X POST https://gateway.pipeworx.io/v1/tools/open_sanctions_search_entities \
-  -H 'Content-Type: application/json' \
-  -d '{"query":"Gazprom"}'
-```
-
-No account needed for the first calls. Inspect any tool: `GET https://gateway.pipeworx.io/v1/tools/open_sanctions_search_entities`. Find one: `POST https://gateway.pipeworx.io/v1/tools/search_packs` with `{"query":"..."}`.

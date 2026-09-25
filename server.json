@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.pipeworx-io/open-sanctions",
   "title": "Open Sanctions",
-  "description": "OpenSanctions MCP — Global sanctions and PEP data (free, no auth required)",
-  "version": "0.1.0",
+  "description": "OpenSanctions MCP — global sanctions and PEP data.",
+  "version": "0.1.1",
   "websiteUrl": "https://pipeworx.io/packs/open-sanctions",
   "repository": {
     "url": "https://github.com/pipeworx-io/mcp-open-sanctions",
