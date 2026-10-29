@@ -1,0 +1,52 @@
+[
+  {
+    "name": "search_entities",
+    "description": "Search global sanctions, watchlists, and PEP (politically exposed persons) databases. Returns matched entities with names, countries, datasets, and sanctions details. Example: search_entities(\"Vladimir Putin\") or search_entities(\"Huawei\", schema=\"Company\"). Requires your own OpenSanctions API key, passed as _apiKey.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Name or keyword to search (e.g., \"Gazprom\", \"Kim Jong\")"
+        },
+        "schema": {
+          "type": "string",
+          "description": "Entity type: \"Person\", \"Company\", \"Organization\", \"Vessel\", \"Aircraft\""
+        },
+        "countries": {
+          "type": "string",
+          "description": "Comma-separated country codes (e.g., \"ru,cn,ir\")"
+        },
+        "_apiKey": {
+          "type": "string",
+          "description": "Your own OpenSanctions API key (BYO — Pipeworx does not supply one; OpenSanctions is a commercial service). Get one at opensanctions.org/api — free for non-commercial use, paid for commercial. For a keyless US sanctions/export-control screen, use the sanctions-screening pack (sanctions_screen) instead."
+        }
+      },
+      "required": [
+        "query",
+        "_apiKey"
+      ]
+    }
+  },
+  {
+    "name": "get_entity",
+    "description": "Get full details for a sanctioned entity by its OpenSanctions ID. Returns all properties including names, addresses, identifiers, sanctions programs, and related entities. Requires your own OpenSanctions API key, passed as _apiKey.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "OpenSanctions entity ID (e.g., \"Q7747\")"
+        },
+        "_apiKey": {
+          "type": "string",
+          "description": "Your own OpenSanctions API key (BYO — Pipeworx does not supply one; OpenSanctions is a commercial service). Get one at opensanctions.org/api — free for non-commercial use, paid for commercial. For a keyless US sanctions/export-control screen, use the sanctions-screening pack (sanctions_screen) instead."
+        }
+      },
+      "required": [
+        "id",
+        "_apiKey"
+      ]
+    }
+  }
+]
