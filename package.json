@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-open-sanctions",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "OpenSanctions MCP — global sanctions and PEP data.",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "open-sanctions",
     "gatewaySlug": "open-sanctions",
-    "sourceHash": "v1-3127526f96cd61e6fd1b75c5508a72a83fbfd2630807768728dc8cf0fb9ef154",
-    "sourceCommit": "b2c4383545bb35171d0ada2beb1c9c7168ea175e"
+    "sourceHash": "v1-8e5b422a393aaa8b3bd83d9af28eb00455ed75b5f0760711025c9b9d7de00b6a",
+    "sourceCommit": "bed7faa04e7276899b5e3870ef11c98625371f2b"
   }
 }
